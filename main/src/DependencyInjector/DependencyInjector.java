@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DependencyInjector {
-    private Map<Class<?>, Class<?>> mappings = new HashMap<>();
+    private final Map<Class<?>, Class<?>> mappings = new HashMap<>();
 
     public <T> void register(Class<T> interfaceType, Class<? extends T> implementationType) {
         mappings.put(interfaceType, implementationType);
