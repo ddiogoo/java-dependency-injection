@@ -12,4 +12,8 @@ public class Service {
     public void doSomething() {
         System.out.println("just a test...");
     }
+
+    public void exec(String message) {
+        logger.log(message);
+    }
 }

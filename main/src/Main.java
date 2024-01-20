@@ -13,6 +13,7 @@ public class Main {
 
             Service service = di.resolve(Service.class);
             service.doSomething();
+            service.exec("hello");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
