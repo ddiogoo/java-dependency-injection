@@ -9,11 +9,7 @@ public class Service {
         this.logger = logger;
     }
 
-    public void doSomething() {
-        System.out.println("just a test...");
-    }
-
-    public void exec(String message) {
+    public void doSomething(String message) {
         logger.log(message);
     }
 }
