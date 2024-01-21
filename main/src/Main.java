@@ -1,19 +1,23 @@
 import DependencyInjector.DependencyInjector;
 import Logger.ConsoleLogger;
+import Logger.FileLogger;
 import Logger.ILogger;
 import Service.Service;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            DependencyInjector di = new DependencyInjector();
+            DependencyInjector injectorConsole = new DependencyInjector();
+            injectorConsole.register(ILogger.class, ConsoleLogger.class);
+            injectorConsole.register(Service.class, Service.class);
+            Service serviceConsole = injectorConsole.resolve(Service.class);
+            serviceConsole.doSomething("hello");
 
-            di.register(ILogger.class, ConsoleLogger.class);
-            di.register(Service.class, Service.class);
-
-            Service service = di.resolve(Service.class);
-            service.doSomething();
-            service.exec("hello");
+            DependencyInjector injectorFile = new DependencyInjector();
+            injectorFile.register(ILogger.class, FileLogger.class);
+            injectorFile.register(Service.class, Service.class);
+            Service serviceFile = injectorFile.resolve(Service.class);
+            serviceFile.doSomething("hello");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
